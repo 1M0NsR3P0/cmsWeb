@@ -2,6 +2,23 @@
     display: flex;
     width: 100%;
 }
+*[tooltips]{
+    position: relative;
+}
+*[tooltips]:hover::after{
+    font-size: small;
+    border: none;
+    border-radius: 5px;
+    padding: 1px 5px;
+    content: attr(tooltips);
+    background-color: rgba(0, 81, 255, 0.589);
+    color: black;
+    position: absolute;
+    bottom: -40%;
+    left: 2px;
+    animation: tooltips 5s ease-in 0s 1 forwards;
+}
+
 .Flex{
     display: flex;
     justify-content: center;
@@ -87,7 +104,7 @@ hr{
 .myBtn{
     color: white;
 }
-.home :where(.btn){
+.home:where(.btn){
     border: 1px solid rgb(192, 189, 189) !important;
     border-radius: 3px !important;
     padding: 15px 0px !important;
@@ -111,21 +128,30 @@ hr{
     font-size: 35px;
     font-weight: 500;
 }
+.h2{
+    font-size: 28px;
+    font-weight: 500;
+}
+.h3{
+    font-size: 24px;
+    font-weight: 500;
+}
+
 .steps{
     width: 100%;
     display: flex;
     justify-content: center;
     /* border: 1px solid gray; */
+    /* gap: 50px; */
 }
 .step-container{
-    margin: 10px 50px;
-    padding: 20px 100px;
+    /* margin: 10px 50px; */
+    padding: 0px 50px;
     display: flex;
-    gap: 10px;
 }
 .step-list{
-    height: 300px;
-    width: 50%;
+    height: auto;
+    width: 100%;
     border: 1px solid rgb(188, 188, 188);
 }
 .circle{
@@ -158,4 +184,219 @@ hr{
 }
 .myBtn-ghost:hover{
     color: gray;
+}
+.myBtn-edit{
+    margin: 2px 30px;
+    color: rgb(150, 255, 213);
+    text-align: left;
+    padding: 8px 10px ;
+    border-radius: 25px;
+    font-weight: 500;
+    background-color: #0080F8;
+    font-size: small;
+}
+.mySwiper{
+    position: relative !important;
+}
+.swiper-button-prev{
+    position: absolute !important;
+    top: 15% !important;
+    left: 85% !important;
+}
+.swiper-button-next{
+    position: absolute !important;
+    top: 15% !important;
+    left: 95% !important;
+}
+.swiper-pagination-bullets{
+    display: none !important;
+}
+.SearchSupposrtArticles{
+    padding: 10px 440px 10px 5px;
+    margin: 20px 0;
+    outline: 1px solid rgba(128, 128, 128, 0.731);
+}
+.SearchSupposrtArticles:focus{
+    outline: 4px solid #0080F8;
+}
+.hoveringEffect{
+    border: none;
+    padding: 10px 5px;
+    margin: 0 !important;
+    cursor: pointer;
+}
+.hoveringEffect:hover{
+    background-color: rgb(230, 230, 230) !important;
+}
+.hoveringEffect:active{
+    background-color: rgb(0, 41, 146) !important;
+    color: white;
+}
+.quickLinks li{
+    color: #1f1f1f;
+}
+.animateLInks{
+    animation: animateLInk 1s ease -0.7s 1;
+}
+.statNavbar{
+    border-bottom: 1px dashed rgba(214, 214, 214, 0.916);
+}
+.ActiveUnderline{
+    border-bottom: 1px solid black;
+    font-weight: 500;
+}
+.traffic-box-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+.traffic-box-container :where(.box) {
+    position: relative;
+    display: flex;
+    background-color: rgb(251, 251, 251);
+    flex-direction: column;
+    justify-content: start;
+    border: 1px solid rgba(128, 128, 128, 0.152);
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+    margin: 10px;
+    padding: 30px 100px 30px 30px ;
+}   
+.popUpAfter{
+    position: absolute;
+    background-color: #1f1f1f;
+    bottom: -40px;
+    left: 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 75%;
+    color: white;
+    padding: 12px;
+} 
+.popUpAfter::after{
+    content: '.';
+    color: #1f1f1f;
+    width: 10%;
+    position: absolute;
+    top: -8%;
+    left: 0.5%;
+    border-radius: 30%;
+    background-color: #1f1f1f;
+    z-index: 10;
+    transform: rotate(-75deg);
+}
+.selector-Btn{
+    width: 100px;
+    height: 100%;
+    border: 1px solid rgba(208, 206, 206, 0.662);
+    border-radius: 0px;
+    padding: 10px 20px;
+    background-color: rgb(224, 224, 224);
+    font-weight: 600;
+    color: black;
+}
+.selector-Btn:hover{
+    background-color: rgb(192, 192, 192);
+
+}
+.ActiveBlue{
+    background-color: #0080F8;
+}
+.myCheckbox{
+    display: inline-block;
+    border: 6px solid #0081bd;
+    width: 24px;
+    height: 24px;
+}
+.myCheckboxActive{
+    background-color:#0081bd ;
+
+}
+.ViewBox-container{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+}
+.ViewBox{
+    border: 1px solid rgb(225, 225, 225);
+    border-radius: 15px;
+    background-color: rgb(241, 241, 241);
+    height: 100px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ViewBox:hover{
+    border: 1px solid rgb(54, 148, 255);
+
+    
+}
+.hoverRow:hover{
+    background-color: rgb(0, 168, 168);
+}
+.id23{
+    border: 1px solid rgb(243, 243, 243);
+    padding: 10px 20px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.id123{
+    padding: 10px 20px;
+    
+}
+.id123:hover{
+    border: 1px solid rgb(0, 168, 168);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes animateLInk {
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}
+@keyframes tooltips {
+    0%{
+        opacity: 0;
+    }
+    30%{
+        opacity: 0;
+    }
+    40%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+    }
 }

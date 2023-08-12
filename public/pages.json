@@ -1,0 +1,42 @@
+[
+    {
+      "name":"inbox",
+        "path":"/inbox"
+      },
+      {
+        "name": "feedback",
+        "path":"/feedback"
+      },
+      {
+        "name":"tools",
+        "path":"/tools"
+      },
+      {
+        "name": "comments",
+        "path":"/comments"
+      },
+      {
+        "name":"pages",
+        "path":"/pages"
+      },
+      {
+        "name": "media",
+        "path":"/media"
+      },
+      {
+        "name":"plugin",
+        "path":"/plugin"
+      },
+      {
+        "name": "post",
+        "path":"/post"
+      },
+      {
+        "name":"users",
+        "path":"/users"
+      },
+      {
+        "name": "jetpack",
+        "path":"/jetpack"
+      }
+  ]

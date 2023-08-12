@@ -16,6 +16,9 @@ import Plugin from './assets/Components/Plugin.jsx';
 import Post from './assets/Components/Post.jsx';
 import User from './assets/Components/User.jsx';
 import ZetPack from './assets/Components/ZetPack.jsx';
+import Traffic from './assets/Components/Traffic.jsx';
+import Insights from './assets/Components/Insights.jsx';
+import Subscribers from './assets/Components/Subscribers.jsx';
 const router = createBrowserRouter ([
   {
     path : '/',
@@ -27,7 +30,21 @@ const router = createBrowserRouter ([
       },
       {
         path:'/state',
-        element: <State/>
+        element: <State/>,
+        children:[
+          {
+            path:'/state/traffic',
+            element:<Traffic/>
+          },
+          {
+            path:'/state/insights',
+            element:<Insights/>
+          },
+          {
+            path:'/state/subscribers',
+            element:<Subscribers/>
+          },
+        ]
       },
       {
         path:'/inbox',
