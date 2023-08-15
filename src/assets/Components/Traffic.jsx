@@ -10,8 +10,17 @@ import { Pagination, Navigation } from 'swiper/modules';
 import DynamicLink from './DynamicLink';
 import { Link } from 'react-router-dom';
 import GeoChart from './GeoChart';
+import { useAppContext } from './Context';
 
-const Traffic = () => {
+const Traffic = (props) => {
+    const {
+        showSetting,
+        toggleSetting,
+        showAuthor,
+        toggleAuthor,
+        showVideo,
+        toggleVideo,
+    } = useAppContext()
     const [showPopUp, setShowPopUp] = useState(false);
     const [showPopUp1, setShowPopUp1] = useState(false);
     const [showPopUp2, setShowPopUp2] = useState(false);
@@ -19,6 +28,8 @@ const Traffic = () => {
     const [dateCount, setDateCount] = useState('daily')
     const [isActivated, setActivated] = useState(false);
     const [barData, setBarData] = useState("Views");
+
+
     const popUpHandle = () => {
         setShowPopUp(!showPopUp);
     }
@@ -389,44 +400,44 @@ const Traffic = () => {
             </div>
             <div className='w-full my-10 '>
                 <div className='gap-x-16 gap-y-5 id23'>
-                    <div className='border w-full id123'>
-                            <h1 className='h3 text-left'>Authors1</h1>
-                            <p>Traffic that authors have generated will show here.</p>
-                            <button><Link to={"/"}>View Details</Link> </button>
+                    <div className={`border w-full id123 ${showVideo?"":"hidden"}`}>
+                        <h1 className='h3 text-left'>Authors</h1>
+                        <p>Traffic that authors have generated will show here.</p>
+                        <button><Link to={"/"}>View Details</Link> </button>
                     </div>
                     <div className='border w-full id123'>
-                            <h1 className='h3 text-left'>Search terms</h1>
-                            <p>See terms that visitors search to find your site, here.</p>
-                            <button><Link to={"/"}>View Details</Link> </button>
+                        <h1 className='h3 text-left'>Search terms</h1>
+                        <p>See terms that visitors search to find your site, here.</p>
+                        <button><Link to={"/"}>View Details</Link> </button>
                     </div>
                     <div className='border w-full id123'>
-                            <h1 className='h3 text-left'>Clicks</h1>
-                            <p>Your most clicked external links will display here.</p>
-                            <button><Link to={"/"}>View Details</Link> </button>
+                        <h1 className='h3 text-left'>Clicks</h1>
+                        <p>Your most clicked external links will display here.</p>
+                        <button><Link to={"/"}>View Details</Link> </button>
                     </div>
-                    <div className='border w-full id123 col-span-2'>
-                            <h1 className='h3 text-left'>Videos</h1>
-                            <p>Your most viewed video stats will show up here.</p>
-                            <button><Link to={"/"}>View Details</Link> </button>
+                    <div className={`border w-full id123 col-span-2 ${showVideo?"":"hidden"}`}>
+                        <h1 className={`h3 text-left `}>Videos</h1>
+                        <p>Your most viewed video stats will show up here.</p>
+                        <button><Link to={"/"}>View Details</Link> </button>
                     </div>
                     <div className='border w-full id123 col-span-1'>
-                            <h1 className='h3 text-left'>Emails</h1>
-                            <p>Stats from your emails will display here.</p>
-                            <button><Link to={"/"}>View Details</Link> </button>
+                        <h1 className='h3 text-left'>Emails</h1>
+                        <p>Stats from your emails will display here.</p>
+                        <button><Link to={"/"}>View Details</Link> </button>
                     </div>
                     <div className='border w-full id123 col-span-1'>
-                            <h1 className='h3 text-left'>File Downloads</h1>
-                            <p>Stats from any downloaded files will display here.</p>
-                            <button><Link to={"/"}>View Details</Link> </button>
+                        <h1 className='h3 text-left'>File Downloads</h1>
+                        <p>Stats from any downloaded files will display here.</p>
+                        <button><Link to={"/"}>View Details</Link> </button>
                     </div>
                 </div>
             </div>
             <div className='w-full'>
                 <div className='border p-10'>
-                    <div><img src="/logo.svg" alt="none" className='w-[100px]'/></div>
+                    <div><img src="/logo.svg" alt="none" className='w-[100px]' /></div>
                     <div className='flex justify-between items-center'>
                         <h1 className='h2'>Bring your stats with you using the Jetpack mobile app</h1>
-                        <img src="/frame.png" alt="none" className='w-[124px]'/>
+                        <img src="/frame.png" alt="none" className='w-[124px]' />
                     </div>
                     <div>
                         <p>Visit <a href="https://imons-world.web.app/" target='blank'>here</a> or scan the QR code to download the Jetpack mobile app.</p>

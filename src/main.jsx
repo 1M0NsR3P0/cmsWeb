@@ -19,72 +19,73 @@ import ZetPack from './assets/Components/ZetPack.jsx';
 import Traffic from './assets/Components/Traffic.jsx';
 import Insights from './assets/Components/Insights.jsx';
 import Subscribers from './assets/Components/Subscribers.jsx';
-const router = createBrowserRouter ([
+import { AppProvider } from './assets/Components/Context.jsx';
+const router = createBrowserRouter([
   {
-    path : '/',
-    element :<App/>,
-    children : [
+    path: '/',
+    element: <App />,
+    children: [
       {
-        path:'/',
-        element:<Home/>
+        path: '/',
+        element: <Home />
       },
       {
-        path:'/state',
-        element: <State/>,
-        children:[
+        path: '/state',
+        element: <State />,
+        children: [
           {
-            path:'/state/traffic',
-            element:<Traffic/>
+            path: '/state/traffic',
+            element: <Traffic />
           },
           {
-            path:'/state/insights',
-            element:<Insights/>
+            path: '/state/insights',
+            element: <Insights />
           },
           {
-            path:'/state/subscribers',
-            element:<Subscribers/>
+            path: '/state/subscribers',
+            element: <Subscribers />
           },
         ]
       },
       {
-        path:'/inbox',
-        element:<Inbox/>
+        path: '/inbox',
+        element: <Inbox />
       },
       {
-        path:'/feedback',
-        element: <Feedback/>
+        path: '/feedback',
+        element: <Feedback />
       },
       {
-        path:'/tools',
-        element:<Tools/>
+        path: '/tools',
+        element: <Tools />
       },
       {
-        path:'/comments',
-        element: <Comment/>
+        path: '/comments',
+        element: <Comment />
       },
       {
-        path:'/pages',
-        element:<Pages/>
+        path: '/pages',
+        element: <Pages />
       },
       {
-        path:'/media',
-        element: <Media/>
+        path: '/media',
+        element: <Media />
       },
       {
-        path:'/plugin',
-        element:<Plugin/>
+        path: '/plugin',
+        element: <Plugin />
       },
       {
-        path:'/post',
-        element: <Post/>
+        path: '/post',
+        element: <Post />
       },
       {
-        path:'/users',
-        element:<User/>
+        path: '/users',
+        element: <User />
       },
       {
-        path:'/jetpack',
-        element: <ZetPack/>
+        path: '/jetpack',
+        element: <ZetPack />
       }
     ]
   }
@@ -92,6 +93,8 @@ const router = createBrowserRouter ([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <AppProvider>
+      <RouterProvider router={router} />
+    </AppProvider>
   </React.StrictMode>
 )
