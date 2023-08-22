@@ -5,49 +5,80 @@ import { useEffect, useState } from 'react'
 import Nav from './Nav';
 
 function App() {
-  // cms system with mongodb
+  // TODO : cms system with mongodb
   const [cookies, setCookies] = useState(false)
-  // alert(localStorage.getItem('cookies'))
   const [width, setWidth] = useState(false);
+
   const collapseHandle = () => {
     setWidth(!width)
   }
 
-  const cookiesAcceptedHandle = () => {
-    const currentDate = new Date();
-    const savedDate = Date.parse(currentDate.toString().split(' GMT')[0].slice(0, -3));
-    localStorage.setItem('cookiesAccepted', savedDate)
-    const today = currentDate
-    const todayNumeric = Date.parse(today)
-    // alert(Math.floor(willShow / (1000 * 60 * 60 * 24)))
-    const willShow = Math.floor(todayNumeric - savedDate / (1000 * 60 * 60 * 24));
-    if (willShow >= 1) {
-      localStorage.setItem('cookies', true)
-      if (JSON.parse(localStorage.getItem('cookies')) === true) {
-        setCookies(true)
-      }
-    }
-  }
-  const hideCookies = ()=>{
-    if(JSON.parse(localStorage.getItem('cookies'))===true){
-      document.getElementById('cookies-container').classList.add('hidden')
-    }
-  }
   useEffect(() => {
     const currentDate = new Date();
-    const savedDate = currentDate.toString().split(' GMT')[0].slice(0, -3);
-    const cookie = localStorage.getItem('cookies');
+    const formattedDate = currentDate.toString().split(' GMT')[0].slice(0, -3);
+    const savedDate = Date.parse(formattedDate)
+    const cookie = localStorage.getItem('cookiesAccepted');
     if (cookie) {
-      cookiesAcceptedHandle()
+      cookiesAcceptedHandle(savedDate)
     }
     else {
       localStorage.setItem('cookies', false)
-      localStorage.setItem('cookiesAccepted', savedDate)
-      cookiesAcceptedHandle()
+      localStorage.setItem('cookiesAccepted', Date.parse(savedDate))
+      if (cookie) {
+        cookiesAcceptedHandle(savedDate)
+      }
+    }
+    
+  }, [])
+
+  const resetMe = ()=>{
+    localStorage.setItem('cookies',false);
+    localStorage.setItem('cookiesAccepted',0)
+  }
+  const cookiesAcceptedHandle = (saved) => {
+    const today = new Date();
+    const formattedDate = today.toString().split(' GMT')[0].slice(0, -3);
+    // const formattedDate = "Tue Nov 18 2023 22:03"
+    const todayNumeric = Date.parse(formattedDate)
+    
+    const result = Math.floor(todayNumeric - parseInt(saved));
+    const willShow = Math.floor(result / (1000 * 60 * 60 * 24));
+    // alert(willShow)
+    localStorage.setItem('cookiesAccepted',willShow)
+    
+    if(willShow>=1 && JSON.parse(localStorage.getItem('cookies'))===true){
+      setCookies(true)
+    }
+    if(willShow>=1){
+      localStorage.setItem('cookies',true)
     }
 
+  }
+  const accepTed = () => {
+    if (JSON.parse(localStorage.getItem('cookies')) === true) {
+      localStorage.setItem('cookies', true)
+      hideCookies()
+      resetMe()
+    }
+  }
 
-  }, [])
+  const showCookies = () => {
+
+    if (JSON.parse(localStorage.getItem('cookies')) === true) {
+      localStorage.setItem('cookies', false)
+    }
+    else if (JSON.parse(localStorage.getItem('cookies')) === false) {
+      localStorage.setItem('cookies', true)
+    }
+
+  }
+  const hideCookies = () => {
+    // document.getElementById('cookies-container').classList.add('hidden')
+    setCookies(false)
+    if (JSON.parse(localStorage.getItem('cookiesAccepted')) <= 1) {
+    }
+  }
+
 
 
   return (
@@ -75,7 +106,8 @@ function App() {
         <div className={`outlet-container ${!width ? 'ml-[300px]' : 'pl-[10%]'}`}>
           <div className={`fixed ml-[15%] z-30 bottom-[2%] left-[2%] w-[80%] ${cookies ? "block" : "hidden"}`} id='cookies-container'>
             <div className='cookies'>
-              <span onClick={''} className='text-[1.3rem] btn absolute right-2 top-1'>&#10060;</span>
+              <span onClick={hideCookies} className='text-[1.3rem] btn absolute right-2 top-1'>&#10060;</span>
+              <span onClick={accepTed} className='text-[1.3rem] btn btn-xs absolute right-2 bottom-1'>ok</span>
               <h1>hellow user!</h1>
               <p>
                 As an open source company, we take your privacy seriously and want to be as transparent as possible. So: We use cookies to collect some personal data from you (like your browsing data, IP addresses, and other unique identifiers). Some of these cookies we absolutely need in order to make things work, and others you can choose in order to optimize your experience while using our site and services.

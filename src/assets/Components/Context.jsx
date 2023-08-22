@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext } from 'react';
 import '../../../src/App.css'
+import products from "../../../public/products.json"
 // Create a new context
 const AppContext = createContext();
 
@@ -10,6 +11,7 @@ export const AppProvider = ({ children }) => {
   const [showVideo, setVideo] = useState(true);
   const [showSettingIcon, setSettingIcon] = useState(true);
   const [makeActiveClass, setActiveClass] = useState(false);
+  const [makeActiveClass2, setActiveClass2] = useState(false);
 
 
   const toggleSetting = () => {
@@ -29,9 +31,47 @@ export const AppProvider = ({ children }) => {
   const ToggleLinkActive = ()=>{
     setActiveClass(true)
   }
+  const ToggleLinkActive2 = ()=>{
+    setActiveClass2(true)
+  }
   const ToggleFlaseActive = ()=>{
     setActiveClass(false)
+    setActiveClass2(false)
   }
+  const letter = <div class='h1'> hello there sir, </div>
+  const letter2 = "<div class='h1'> hello there sir, </div>"
+  const msges = [
+    {
+        id:1,
+        from:"someone1@Mail.com",
+        title: "number 1",
+        msg: <div>
+          sir, <br></br>
+          with due respect i want you to know that Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum impedit repellat minus architecto earum dolorem molestias suscipit ea magni, officiis, fugiat ducimus illum! Obcaecati est culpa quo at id asperiores! <br />
+          your well wisher,
+          <br />
+          mr someone1
+          <br />
+          someone1@mail.com
+        </div>,
+        read: false
+    },
+    {
+        id:2,
+        from:"someone2@Mail.com",
+        title: "number 2",
+        msg: <div>{letter}</div>,
+        read: true
+    },
+    {
+        id:3,
+        from:"someone3@Mail.com",
+        title: "number 3",
+        msg: <div>{letter2}</div>,
+        read: false
+    },
+]
+const user = {mail:"me@mail.com",name:"me"}
 
   // Values that will be available to components
   const contextValues = {
@@ -45,7 +85,12 @@ export const AppProvider = ({ children }) => {
     toggleSettingIcon,
     ToggleLinkActive,
     makeActiveClass,
-    ToggleFlaseActive
+    ToggleFlaseActive,
+    ToggleLinkActive2,
+    makeActiveClass2,
+    msges,
+    products,
+    user,
 
   };
 

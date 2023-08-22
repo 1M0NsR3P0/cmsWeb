@@ -4,19 +4,25 @@ import './App.css'
 import { useAppContext } from "./assets/Components/Context";
 
 const SideNav = () => {
-    const { makeActiveClass, ToggleFlaseActive, ToggleLinkActive } = useAppContext()
+    const { makeActiveClass, makeActiveClass2, ToggleFlaseActive } = useAppContext()
+    const [dropDown, setDropdown] = useState(false)
+    const toogleDropdown = () => {
+        setDropdown(true)
+    }
+    const toogleDropdownOff = () => {
+        setDropdown(false)
+    }
     return (
         <div className="sideNav">
             <div className="relative">
-                
                 <div className="main-container">
                     <div>
                         <div className="overflow-x-hidden">
                             <table className="Table text-xl">
                                 <tbody>
-                                    <tr className="tr">
+                                    <tr className="tr" onClick={toogleDropdownOff}>
                                         <td onClick={ToggleFlaseActive}>
-                                            <ActiveLink to="/">
+                                            <ActiveLink to="/" >
                                                 <span className="icon-container">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                                         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
@@ -24,8 +30,8 @@ const SideNav = () => {
                                                     Home</span>
                                             </ActiveLink></td>
                                     </tr>
-                                    <tr className="tr">
-                                        <td><div className={`${makeActiveClass ? "Active" : ''}`}>
+                                    <tr className="tr" onClick={toogleDropdownOff}>
+                                        <td onClick={ToggleFlaseActive}><div className={`${makeActiveClass ? "Active" : ''}`}>
                                             <ActiveLink to={`/state/traffic`}>
                                                 <span className="icon-container">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -35,27 +41,91 @@ const SideNav = () => {
                                                 </span>
                                             </ActiveLink></div></td>
                                     </tr>
-                                    <tr className="tr">
-                                        <td onClick={ToggleFlaseActive}><ActiveLink to="/inbox">
-                                            <span className="icon-container">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3" />
-                                                </svg>
-                                                Inbox
-                                            </span>
-                                        </ActiveLink></td>
+                                    <tr className="tr" onClick={toogleDropdownOff}>
+                                        <td onClick={ToggleFlaseActive}>
+                                            <div className={`${makeActiveClass2 ? "Active" : ''}`}>
+                                                <ActiveLink to="/inbox/all">
+                                                    <span className="icon-container">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3" />
+                                                        </svg>
+                                                        Inbox
+                                                    </span>
+                                                </ActiveLink>
+                                            </div>
+                                        </td>
                                     </tr>
-                                    <tr className="tr">
+                                    <tr className="tr" onClick={toogleDropdown} >
                                         <td onClick={ToggleFlaseActive}><ActiveLink to="/post" >
                                             <span className="icon-container">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                 </svg>
-                                                Add
+                                                <div className="">Post
+
+                                                </div>
                                             </span>
                                         </ActiveLink></td>
                                     </tr>
-                                    <tr className="tr">
+
+
+
+                                    <tr >
+                                            <td onClick={ToggleFlaseActive}><ActiveLink to="/post" >
+                                                <span className="icon-container">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                    </svg>
+                                                    <div onMouseEnter={toogleDropdown} className="">Post
+
+                                                    </div>
+                                                </span>
+                                            </ActiveLink></td>
+                                            <td onClick={ToggleFlaseActive}><ActiveLink to="/post" >
+                                                <span className="icon-container">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                    </svg>
+                                                    <div onMouseEnter={toogleDropdown} className="">Post
+
+                                                    </div>
+                                                </span>
+                                            </ActiveLink></td>
+                                            <td onClick={ToggleFlaseActive}><ActiveLink to="/post" >
+                                                <span className="icon-container">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                    </svg>
+                                                    <div onMouseEnter={toogleDropdown} className="">Post
+
+                                                    </div>
+                                                </span>
+                                            </ActiveLink></td>
+                                            <td onClick={ToggleFlaseActive}><ActiveLink to="/post" >
+                                                <span className="icon-container">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                    </svg>
+                                                    <div onMouseEnter={toogleDropdown} className="">Post
+
+                                                    </div>
+                                                </span>
+                                            </ActiveLink></td>
+                                            <td onClick={ToggleFlaseActive}><ActiveLink to="/post" >
+                                                <span className="icon-container">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                    </svg>
+                                                    <div onMouseEnter={toogleDropdown} className="">Post
+
+                                                    </div>
+                                                </span>
+                                            </ActiveLink></td>
+                                    </tr>
+
+
+
+                                    <tr className="tr" onClick={toogleDropdownOff}>
                                         <td onClick={ToggleFlaseActive}><ActiveLink to="/media" >
                                             <span className="icon-container">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -65,7 +135,7 @@ const SideNav = () => {
                                             </span>
                                         </ActiveLink></td>
                                     </tr>
-                                    <tr className="tr">
+                                    <tr className="tr" onClick={toogleDropdownOff}>
                                         <td onClick={ToggleFlaseActive}><ActiveLink to="/comments" >
                                             <span className="icon-container">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -75,7 +145,7 @@ const SideNav = () => {
                                             </span>
                                         </ActiveLink></td>
                                     </tr>
-                                    <tr className="tr">
+                                    <tr className="tr" onClick={toogleDropdownOff}>
                                         <td onClick={ToggleFlaseActive}><ActiveLink to="/pages" >
                                             <span className="icon-container">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -85,7 +155,7 @@ const SideNav = () => {
                                             </span>
                                         </ActiveLink></td>
                                     </tr>
-                                    <tr className="tr">
+                                    <tr className="tr" onClick={toogleDropdownOff}>
                                         <td onClick={ToggleFlaseActive}><ActiveLink to="/feedback" >
                                             <span className="icon-container">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -95,7 +165,7 @@ const SideNav = () => {
                                             </span>
                                         </ActiveLink></td>
                                     </tr>
-                                    <tr className="tr">
+                                    <tr className="tr" onClick={toogleDropdownOff}>
                                         <td onClick={ToggleFlaseActive}><ActiveLink to="/jetpack" >
                                             <span className="icon-container">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -105,7 +175,7 @@ const SideNav = () => {
                                             </span>
                                         </ActiveLink></td>
                                     </tr>
-                                    <tr className="tr">
+                                    <tr className="tr" onClick={toogleDropdownOff}>
                                         <td onClick={ToggleFlaseActive}><ActiveLink to="/plugin" >
                                             <span className="icon-container">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -115,7 +185,7 @@ const SideNav = () => {
                                             </span>
                                         </ActiveLink></td>
                                     </tr>
-                                    <tr className="tr">
+                                    <tr className="tr" onClick={toogleDropdownOff}>
                                         <td onClick={ToggleFlaseActive}><ActiveLink to="/users" >
                                             <span className="icon-container">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -125,7 +195,7 @@ const SideNav = () => {
                                             </span>
                                         </ActiveLink></td>
                                     </tr>
-                                    <tr className="tr">
+                                    <tr className="tr" onClick={toogleDropdownOff}>
                                         <td onClick={ToggleFlaseActive}><ActiveLink to="/tools">
                                             <span className="icon-container">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -141,7 +211,7 @@ const SideNav = () => {
                         </div>
                     </div>
                 </div>
-            
+
             </div>
         </div>
     );

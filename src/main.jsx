@@ -20,6 +20,13 @@ import Traffic from './assets/Components/Traffic.jsx';
 import Insights from './assets/Components/Insights.jsx';
 import Subscribers from './assets/Components/Subscribers.jsx';
 import { AppProvider } from './assets/Components/Context.jsx';
+import Mail from './assets/Components/Mail.jsx';
+import Spam from './assets/Components/Spam.jsx';
+import Trash from './assets/Components/Trash.jsx';
+import TheMail from './assets/Components/TheMail.jsx';
+import SecretRoutes from './assets/Components/SecretRoutes.jsx';
+import NewMail from './assets/Components/NewMail.jsx';
+import EditProduct from './assets/Components/EditProduct.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -49,7 +56,33 @@ const router = createBrowserRouter([
       },
       {
         path: '/inbox',
-        element: <Inbox />
+        element: <SecretRoutes><Inbox /></SecretRoutes>,
+        children:[
+          {
+            path:'/inbox/all',
+            element:<Mail/>
+          },
+          {
+            path:'/inbox/spam',
+            element:<Spam/>
+          },
+          {
+            path:'/inbox/trash',
+            element:<Trash/>
+          },
+        ]
+      },
+      {
+        path:'/mail/:id',
+        element:<TheMail/>
+      },
+      {
+        path:'/edit/:id',
+        element:<EditProduct/>
+      },
+      {
+        path:'/new/write',
+        element:<NewMail/>
       },
       {
         path: '/feedback',

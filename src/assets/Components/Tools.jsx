@@ -1,7 +1,7 @@
 const Tools = () => {
     return (
         <div>
-            tools page
+            erty
         </div>
     );
 };

@@ -1,17 +1,31 @@
-.app{
+.app {
     display: flex;
     width: 100%;
 }
-*[tooltips]{
-    position: relative;
+.selectNo{
+    user-select: none;
 }
-*[tooltips]:hover::after{
+
+/* hiding scrollbars */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* my tootips */
+*[tooltips] {
+    position: relative;
+    z-index: 10000;
+}
+
+*[tooltips]:hover::after {
+    z-index: 10000;
+    /* overflow: scroll; */
     font-size: small;
     border: none;
     border-radius: 5px;
     padding: 1px 5px;
     content: attr(tooltips);
-    background-color: rgba(0, 81, 255, 0.589);
+    background-color: whitesmoke;
     color: black;
     position: absolute;
     bottom: -40%;
@@ -19,33 +33,43 @@
     animation: tooltips 5s ease-in 0s 1 forwards;
 }
 
-.Flex{
+body {
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.Flex {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
     height: 100%;
 }
-ul{
+
+ul {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
 }
-.navigation{
+
+.navigation {
     width: 100%;
     height: 40px;
     background-color: rgb(35, 40, 45);
 }
-.navigation .btn-primary{
+
+.navigation .btn-primary {
     background-color: white !important;
     color: black !important;
     border: none !important;
 }
-.title-bar{
-    
-}
-.sideNav-container{
+
+.title-bar {}
+
+.sideNav-container {
     margin-top: 40px;
     overflow: hidden;
     width: 300px;
@@ -54,7 +78,8 @@ ul{
     height: 95.6vh;
     background-color: rgb(35, 40, 45);
 }
-.ActiveWhite{
+
+.ActiveWhite {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,24 +87,28 @@ ul{
     height: 100%;
     padding: 0 15px;
 }
-.Active span.icon-container{
+
+.Active span.icon-container {
     padding: 0 0;
-    margin:  0px 0;
+    margin: 0px 0;
     height: 100%;
     width: 100%;
     font-weight: 400;
     font-size: 1rem;
     background-color: rgb(110, 127, 255) !important;
-    
+
 }
-.Table{
+
+.Table {
     width: 100%;
 }
-.table :where(th, td){
-    padding-left:5px !important;
+
+.table :where(th, td) {
+    padding-left: 5px !important;
     padding-right: 0px !important;
 }
-.tr{
+
+.tr {
     line-height: 3rem !important;
     padding: 50px;
     font-size: 0.9rem;
@@ -87,32 +116,39 @@ ul{
     color: white;
     width: 100%;
 }
-.tr:hover{
+
+.tr:hover {
     color: rgb(87, 255, 255);
     background-color: rgb(26, 30, 34);
     border-left: 3px solid forestgreen;
 }
-.icon-container{
+
+.icon-container {
     display: flex;
     justify-content: start;
     align-items: center;
     gap: 10px;
 }
-hr{
+
+hr {
     border-top: 0.5px dashed rgb(65, 65, 65);
 }
-.myBtn{
+
+.myBtn {
     color: white;
 }
-.home:where(.btn){
+
+.home:where(.btn) {
     border: 1px solid rgb(192, 189, 189) !important;
     border-radius: 3px !important;
     padding: 15px 0px !important;
 }
-.outlet-container{
+
+.outlet-container {
     width: 100%;
 }
-.outlet-container{
+
+.outlet-container {
     background-color: whitesmoke;
     margin-top: 40px;
     padding: 2% 2%;
@@ -120,41 +156,48 @@ hr{
     overflow-y: scroll;
     overflow-x: hidden;
 }
-.outlets{
+
+.outlets {
     /* border: 10px solid green; */
     /* height: 2000px; */
 }
-.h1{
+
+.h1 {
     font-size: 35px;
     font-weight: 500;
 }
-.h2{
+
+.h2 {
     font-size: 28px;
     font-weight: 500;
 }
-.h3{
+
+.h3 {
     font-size: 24px;
     font-weight: 500;
 }
 
-.steps{
+.steps {
     width: 100%;
     display: flex;
     justify-content: center;
     /* border: 1px solid gray; */
     /* gap: 50px; */
 }
-.step-container{
+
+.step-container {
     /* margin: 10px 50px; */
     padding: 0px 50px;
     display: flex;
 }
-.step-list{
+
+.step-list {
     height: auto;
     width: 100%;
     border: 1px solid rgb(188, 188, 188);
 }
-.circle{
+
+.circle {
     border: 5px solid rgb(198, 198, 198);
     height: 50px;
     width: 50px;
@@ -163,18 +206,20 @@ hr{
     align-items: center;
     justify-content: center;
 }
-.sitePreview-conatiner{
+
+.sitePreview-conatiner {
     width: 50%;
-    
+
 }
-.stepTitle{
+
+.stepTitle {
     padding: 2px 20px;
     font-weight: 600;
     color: black;
     font-size: 1.2rem;
 }
-.myBtn-ghost
-{
+
+.myBtn-ghost {
     margin: 2px 30px;
     color: rgb(83, 83, 83);
     text-align: left;
@@ -182,75 +227,93 @@ hr{
     font-weight: 600;
     /* border-bottom: 1px solid rgb(212, 212, 212); */
 }
-.myBtn-ghost:hover{
+
+.myBtn-ghost:hover {
     color: gray;
 }
-.myBtn-edit{
+
+.myBtn-edit {
     margin: 2px 30px;
     color: rgb(150, 255, 213);
     text-align: left;
-    padding: 8px 10px ;
+    padding: 8px 10px;
     border-radius: 25px;
     font-weight: 500;
     background-color: #0080F8;
     font-size: small;
 }
-.mySwiper{
+
+.mySwiper {
     position: relative !important;
 }
-.swiper-button-prev{
+
+.swiper-button-prev {
     position: absolute !important;
     top: 15% !important;
     left: 85% !important;
 }
-.swiper-button-next{
+
+.swiper-button-next {
     position: absolute !important;
     top: 15% !important;
     left: 95% !important;
 }
-.swiper-pagination-bullets{
+
+.swiper-pagination-bullets {
     display: none !important;
 }
-.SearchSupposrtArticles{
+
+.SearchSupposrtArticles {
     padding: 10px 440px 10px 5px;
     margin: 20px 0;
     outline: 1px solid rgba(128, 128, 128, 0.731);
 }
-.SearchSupposrtArticles:focus{
+
+.SearchSupposrtArticles:focus {
     outline: 4px solid #0080F8;
 }
-.hoveringEffect{
+
+.hoveringEffect {
     border: none;
     padding: 10px 5px;
     margin: 0 !important;
     cursor: pointer;
 }
-.hoveringEffect:hover{
+
+.hoveringEffect:hover {
     background-color: rgb(230, 230, 230) !important;
 }
-.hoveringEffect:active{
+
+.hoveringEffect:active {
     background-color: rgb(0, 41, 146) !important;
     color: white;
 }
-.quickLinks li{
+
+.quickLinks li {
     color: #1f1f1f;
 }
-.animateLInks{
+
+.animateLInks {
     animation: animateLInk 1s ease -0.7s 1;
 }
-.statNavbar{
+
+.statNavbar {
     border-bottom: 1px dashed rgba(214, 214, 214, 0.916);
 }
-.ActiveUnderline{
+
+.ActiveUnderline {
     border-bottom: 1px solid black;
     font-weight: 500;
+    width: 100%;
 }
-.traffic-box-container{
+
+.traffic-box-container {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
 }
+
 .traffic-box-container :where(.box) {
     position: relative;
     display: flex;
@@ -262,9 +325,10 @@ hr{
     width: auto;
     height: auto;
     margin: 10px;
-    padding: 30px 100px 30px 30px ;
-}   
-.popUpAfter{
+    padding: 30px 100px 30px 30px;
+}
+
+.popUpAfter {
     position: absolute;
     background-color: #1f1f1f;
     bottom: -40px;
@@ -276,8 +340,9 @@ hr{
     width: 75%;
     color: white;
     padding: 12px;
-} 
-.popUpAfter::after{
+}
+
+.popUpAfter::after {
     content: '.';
     color: #1f1f1f;
     width: 10%;
@@ -289,7 +354,8 @@ hr{
     z-index: 10;
     transform: rotate(-75deg);
 }
-.selector-Btn{
+
+.selector-Btn {
     width: 100px;
     height: 100%;
     border: 1px solid rgba(208, 206, 206, 0.662);
@@ -299,29 +365,35 @@ hr{
     font-weight: 600;
     color: black;
 }
-.selector-Btn:hover{
+
+.selector-Btn:hover {
     background-color: rgb(192, 192, 192);
 
 }
-.ActiveBlue{
+
+.ActiveBlue {
     background-color: #0080F8;
 }
-.myCheckbox{
+
+.myCheckbox {
     display: inline-block;
     border: 6px solid #0081bd;
     width: 24px;
     height: 24px;
 }
-.myCheckboxActive{
-    background-color:#0081bd ;
+
+.myCheckboxActive {
+    background-color: #0081bd;
 
 }
-.ViewBox-container{
+
+.ViewBox-container {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 }
-.ViewBox{
+
+.ViewBox {
     border: 1px solid rgb(225, 225, 225);
     border-radius: 15px;
     background-color: rgb(241, 241, 241);
@@ -333,39 +405,46 @@ hr{
     align-items: center;
 }
 
-.ViewBox:hover{
+.ViewBox:hover {
     border: 1px solid rgb(54, 148, 255);
 
-    
+
 }
-.hoverRow:hover{
+
+.hoverRow:hover {
     background-color: rgb(0, 168, 168);
 }
-.id23{
+
+.id23 {
     border: 1px solid rgb(243, 243, 243);
     padding: 10px 20px;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
-.id123{
+
+.id123 {
     padding: 10px 20px;
-    
+
 }
-.id123:hover{
+
+.id123:hover {
     border: 1px solid rgb(0, 168, 168);
 }
-.transition-effect{
-    animation: transition 10s ease  1 forwards;
+
+.transition-effect {
+    animation: transition 10s ease 1 forwards;
 }
-.box-container{
+
+.box-container {
     min-width: 100%;
     width: 100%;
     border: 1px solid rgb(242, 242, 242);
     display: grid;
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(5, 1fr);
     margin: 30px 5px;
 }
-.box{
+
+.box {
     border: 1px solid rgb(228, 228, 228);
     width: 280px;
     min-width: 250px;
@@ -376,36 +455,43 @@ hr{
     background-color: rgb(250, 250, 250);
     border-radius: 10px;
 }
-.box:hover{
+
+.box:hover {
     border: 1px solid rgb(0, 138, 251);
 }
-.ac-wrapper{
+
+.ac-wrapper {
     background-color: rgb(235, 235, 235);
 }
-.aci-wrapper:where(.day-31){
+
+.aci-wrapper:where(.day-31) {
     margin: 0 50px;
 }
-.onlyMonth{
+
+.onlyMonth {
     width: 100% !important;
     display: flex;
     justify-content: center;
     gap: 350px;
     margin: 50px 0px;
 }
-.onlyMonth .ac-wrapper{
+
+.onlyMonth .ac-wrapper {
     display: none !important;
-    width: 100% !important; 
+    width: 100% !important;
 }
-.myBadge{
+
+.myBadge {
     position: absolute;
     top: -10px;
     right: -15px;
     color: green;
     font-weight: 800;
-    font-family:cursive
+    font-family: cursive
 }
-.cookies{
-    background-color:white;
+
+.cookies {
+    background-color: white;
     box-shadow: 10px 10px 10px 0px rgb(199, 199, 199);
     color: black;
     font-size: 1rem;
@@ -415,10 +501,165 @@ hr{
     gap: 10px;
     padding: 30px 40px;
 }
-.cookies h1{
+
+.cookies h1 {
     font-weight: 600;
     font-size: 1.1rem;
 }
+
+.myTable-container {
+    background-color: white;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.myTable-title {
+    text-align: center;
+    font-family: monospace;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.myTable {
+    padding: 10px 20px;
+    width: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #696969;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* flex-flow: wrap; */
+}
+
+.myTable-header {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgb(226, 226, 226);
+    text-align: center;
+}
+
+.myTable-row {
+    display: flex;
+    min-width: 100%;
+    text-align: start;
+    margin: 0;
+    padding: 0;
+    overflow-x: scroll;
+}
+
+.myTable-body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0;
+}
+
+.myTable-body .myTable-row {
+    border-bottom: 1px solid rgb(239, 239, 239);
+    margin: 0px 0;
+    padding: 5px 0;
+    /* background-color: rgb(247, 247, 247); */
+    text-align: center;
+}
+
+.myTable-body .myTable-row:hover {
+    background-color: rgb(250, 250, 250);
+}
+
+.myTable-cell {
+    text-align: start;
+    font-size: larger;
+    overflow-x: scroll;
+    height: fit-content;
+    max-height: 30px;
+    max-width: 150px;
+    min-width: 80px;
+    width: auto;
+}
+
+.modalBox {
+    background-color: whitesmoke;
+    box-shadow: 10px 10px 10px 0px rgb(199, 199, 199);
+    width: 60%;
+    border-radius: 25px;
+    padding: 20px;
+}
+
+.myCard {
+    margin: 10px 0;
+    font-weight: 500;
+    font-family: sans-serif;
+}
+
+.cardId {
+    margin: 10px 0;
+    font-size: small;
+    border-bottom: 1px solid white;
+    cursor: grab;
+}
+
+.cardId *::selection {
+    user-select: none;
+}
+
+.cardHeading {
+    font-size: x-large;
+    font-weight: 700;
+    border-bottom: 1px solid white;
+    margin: 20px 0;
+}
+
+.Card-details {
+    margin: 20px 0;
+    border-bottom: 1px solid white;
+    font-weight: 600;
+    color: #606060;
+}
+
+.Card-details span::selection,
+.cardHeading span::selection {
+    background-color: aquamarine;
+    color: #f89a04;
+}
+
+.selectiondiv {
+    display: flex;
+    margin: 20px 0;
+    border-bottom: 1px solid white;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -439,32 +680,39 @@ hr{
 
 
 @keyframes animateLInk {
-    0%{
+    0% {
         transform: translateY(-100%);
     }
-    100%{
+
+    100% {
         transform: translateY(0%);
     }
 }
+
 @keyframes tooltips {
-    0%{
+    0% {
         opacity: 0;
     }
-    30%{
+
+    30% {
         opacity: 0;
     }
-    40%{
+
+    40% {
         opacity: 1;
     }
-    100%{
+
+    100% {
         opacity: 1;
     }
 }
+
 @keyframes transition {
-    0%{
+    0% {
         opacity: 0;
     }
-    100%{
+
+    100% {
         opacity: 1;
     }
 }

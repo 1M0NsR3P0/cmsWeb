@@ -15,7 +15,6 @@ const State = () => {
         showSettingIcon,
         toggleSettingIcon,
         ToggleLinkActive,
-        ToggleFlaseActive
     } = useAppContext()
 
     const settingHandle = () => {
