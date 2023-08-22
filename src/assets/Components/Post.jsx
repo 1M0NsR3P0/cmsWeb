@@ -13,9 +13,9 @@ const Post = () => {
     const [SelectedProduct, setProduct] = useState([])
     const [SelectedColor, setColor] = useState([])
     const [selectedRow, setRow] = useState(new Array(products.length).fill(false))
+    const newArray = [...selectedRow]
 
     const toggleEdit = (id) => {
-        const newArray = [...selectedRow]
         newArray[id] = !newArray[id]
         setRow(newArray)
     }
@@ -36,7 +36,8 @@ const Post = () => {
     const handleSave = (id) => {
         // navigate(`/edit/:${id}`)
         // fetch('somewhere.com')
-        
+        newArray[arrayId] = !newArray[arrayId]
+        setRow(newArray)
     }
     return (
         <div className="w-full">
