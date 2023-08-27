@@ -1,0 +1,143 @@
+[
+    {
+        "id": 1,
+        "category": "Electronics",
+        "subcategory": [
+            "Smartphones",
+            "Laptops",
+            "Tablets",
+            "Cameras",
+            "AudioDevices",
+            "Headphones"
+        ]
+    },
+    {
+        "id": 2,
+        "category": "Fashion",
+        "subcategory": [
+            {
+                "Men's Clothing": [
+                    "T-Shirts",
+                    "Jeans",
+                    "Jackets",
+                    "FormalShirt",
+                    "Belt",
+                    [
+                        "tie type 1",
+                        "type-2",
+                        "type 1",
+                        "type-2",
+                        "type 1",
+                        "type-2",
+                        "type 1",
+                        [
+                            "type nested",
+                            [
+                                "type 1"
+                            ]
+                        ]
+                    ],
+                    "underwear"
+                ]
+            },
+            {
+                "Women's Clothing": [
+                    "Dresses",
+                    "Tops",
+                    "Skirts",
+                    "Burkha",
+                    "Hijabs"
+                ]
+            },
+            {
+                "Footwear": [
+                    "Casual-Shoes",
+                    "Boots",
+                    "Sandals",
+                    "Sneakers"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "category": "Home and Kitchen",
+        "subcategory": [
+            {
+                "KitchenAppliances": [
+                    "Blenders",
+                    "Coffee Makers",
+                    "Microwaves"
+                ]
+            },
+            {
+                "Furniture": [
+                    "Sofas",
+                    "Tables",
+                    "Beds"
+                ]
+            },
+            {
+                "HomeDecor": [
+                    "Wall Art",
+                    "Mirrors",
+                    "Vases"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "category": "Beauty and Personal Care",
+        "subcategory": [
+            {
+                "Skincare": [
+                    "Cleansers",
+                    "Moisturizers",
+                    "Serums"
+                ]
+            },
+            {
+                "Makeup": [
+                    "Lipsticks",
+                    "Eyeshadows",
+                    "Foundations"
+                ]
+            },
+            {
+                "Haircare": [
+                    "Shampoos",
+                    "Conditioners",
+                    "Styling Products"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "category": "Sports and Outdoors",
+        "subcategory": [
+            {
+                "Fitness Equipmen": [
+                    "Treadmills",
+                    "Dumbbells",
+                    "Yoga Mats"
+                ]
+            },
+            {
+                "Outdoor Gear": [
+                    "Camping Tents",
+                    "Backpacks",
+                    "Hammocks"
+                ]
+            },
+            {
+                "Sports Apparel": [
+                    "Athletic Shorts",
+                    "Sports Bras",
+                    "Running Shoes"
+                ]
+            }
+        ]
+    }
+]

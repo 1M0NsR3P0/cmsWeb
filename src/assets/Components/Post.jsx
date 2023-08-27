@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../app.css"
 import { useAppContext } from "./Context";
 import ActiveLinkBLue from "../../ActiveLinkBlue";
@@ -14,12 +14,15 @@ const Post = () => {
     const [SelectedColor, setColor] = useState([])
     const [selectedRow, setRow] = useState(new Array(products.length).fill(false))
     const newArray = [...selectedRow]
-
+    const [price, setPrice] = useState(0)
+    useEffect(() => {
+        
+    }, [])
     const toggleEdit = (id) => {
         newArray[id] = !newArray[id]
         setRow(newArray)
     }
-    const handleStatusChange = (e, pid,id) => {
+    const handleStatusChange = (e, pid, id) => {
         setId(pid)
         setArrayId(id)
         const newStatus = e.target.value;
@@ -31,6 +34,12 @@ const Post = () => {
             window.my_modal_1.showModal()
             setColor(theProduct.color)
         }
+        if (newStatus === 'delete') {
+            // TODO: fetch and patch
+        }
+        if (newStatus === 'note') {
+            // TODO: fetch and patch
+        }
     };
     // console.log(SelectedProduct.color)
     const handleSave = (id) => {
@@ -40,47 +49,75 @@ const Post = () => {
         setRow(newArray)
     }
     return (
-        <div className="w-full">
-            <div className="w-full">
-                <div className="myTable-container">
-                    <div className="myTable-title">my table tile</div>
-                    <hr className="my-1" />
-                    <div className="myTable">
-                        <div className="myTable-header">
-                            <div className="myTable-row">
-                                <div className="myTable-cell" tooltips="serial no">serial</div>
-                                <div className="myTable-cell" tooltips="product name">title/name</div>
-                                <div className="myTable-cell" tooltips="product colors">color</div>
-                                <div className="myTable-cell" tooltips="total product quantity + new added">Total Q</div>
-                                <div className="myTable-cell" tooltips="Total soled products quantity">Sold Q</div>
-                                <div className="myTable-cell" tooltips="Total products are on Returning status">Return pending</div>
-                                <div className="myTable-cell" tooltips="total orders and product on in delivery status">On Delivery</div>
-                                <div className="myTable-cell" tooltips="counting of total available products for sale or delivery">Stock</div>
-                                <div className="myTable-cell" tooltips="buyer name or from whome the product was bought">Supplier</div>
-                                <div className="myTable-cell" tooltips="a discount will be deducted to the product from the price">discount</div>
-                                <div className="myTable-cell" tooltips="present price per product will be sold without discounted price">Price</div>
-                                <div className="myTable-cell" tooltips="further notes">Notes/Comments</div>
-                                <div className="myTable-cell justify-end" tooltips="edit">edit
+        <div className="w-full relative">
+            <div className="w-full flex justify-center relative">
+                <div className="myTable-container w-[80%] sticky top-0">
+                    <div className="myTable-title sticky top-[-5%]" title="scroll on the row to see hidden text">my table tile</div>
+                    <hr className="my-1 sticky top-0" />
+                    <div className="myTable relative">
+                        <div className="myTable-header sticky top-0">
+                            {/* <div className="myTable-row gap-5">
+                                <div className="myTable-cell" title="serial no">serial</div>
+                                <div className="myTable-cell" title="Product id">P.Id</div>
+                                <div className="myTable-cell" title="product name">title/name</div>
+                                <div className="myTable-cell" title="product colors">color</div>
+                                <div className="myTable-cell" title="counting of total available products for sale or delivery">Stock</div>
+                                <div className="myTable-cell" title="buyer name or from whome the product was bought">Supplier</div>
+                                <div className="myTable-cell" title="a discount will be deducted to the product from the price">discount</div>
+                                <div className="myTable-cell" title="present price per product will be sold without discounted price">Price</div>
+                                <div className="myTable-cell" title="present price per product will be sold without discounted price">note</div>
+
+                                <div className="myTable-cell" title="edit">edit
                                     <span></span></div>
+                            </div> */}
+                            <div className="myTable-row gap-5">
+                                <div className="myTable-cell">
+                                    serial
+                                </div>
+                                <div className="myTable-cell">
+                                    P.Id
+                                </div>
+                                <div className="myTable-cell">
+                                    Title
+                                </div>
+                                <div className="myTable-cell">
+                                    color
+                                </div>
+                                <div className="myTable-cell">
+                                    quantity
+                                </div>
+                                <div className="myTable-cell">
+                                    supplier
+                                </div>
+                                <div className="myTable-cell">
+                                    discount
+                                </div>
+                                <div className="myTable-cell">
+                                    Price
+                                </div>
+                                <div className="myTable-cell">
+                                    Notes
+                                </div>
+                                <div className="myTable-cell">
+                                    Edit
+                                </div>
                             </div>
                         </div>
-                        <div className="myTable-body relative">
+                        <div className="myTable-body sticky top-16">
                             {
-                                products.map((product, id) => (
-                                    <div key={id} className="myTable-row gap-5">
-                                        <div className="myTable-cell">{product.id}</div>
-                                        <div className="myTable-cell">title/name</div>
-                                        <div className="myTable-cell">color</div>
-                                        <div className="myTable-cell">Total Q</div>
-                                        <div className="myTable-cell">Sold Q</div>
-                                        <div className="myTable-cell">Return pending</div>
-                                        <div className="myTable-cell">On Delivery</div>
-                                        <div className="myTable-cell">Stock</div>
-                                        <div className="myTable-cell">Supplier</div>
-                                        <div className="myTable-cell">discount</div>
-                                        <div className="myTable-cell">Price</div>
-                                        <div className="myTable-cell">Notes/Comments</div>
-                                        <div className="myTable-cell">
+                                products.map((product, id) => {
+                                    const discountedPrice = product.oldPrice - (product.oldPrice * (product.discount / 100));
+                                    return <div key={id} className="myTable-row gap-5">
+                                        <div className="myTable-cell text-center">{id + 1}</div>
+                                        <div className="myTable-cell">{product?.id}</div>
+                                        <div className="myTable-cell">{product?.name}</div>
+                                        <div className="myTable-cell">{product?.color.map((e, id) => <span className="mr-1">{e},</span>)}</div>
+                                        <div className="myTable-cell">{product?.quantity}</div>
+                                        <div className="myTable-cell">{product?.supplier}</div>
+                                        <div className="myTable-cell">{product?.discount}</div>
+                                        <div className="myTable-cell">{discountedPrice === NaN? 0:discountedPrice}</div>
+                                        <div className="myTable-cell">{product.notes}</div>
+                                        <div className="myTable-cell flex justify-center">
 
                                             <span>
 
@@ -89,22 +126,22 @@ const Post = () => {
                                                 </svg>}
                                                 {selectedRow[id] &&
                                                     <select className=""
-                                                        onChange={(e) => handleStatusChange(e, product.id,id)}
+                                                        onChange={(e) => handleStatusChange(e, product.id, id)}
                                                     // onClick={openModal}
                                                     >
                                                         <option value="boost">Boost!
                                                         </option>
                                                         <option value="edit">edit
                                                         </option>
-                                                        <option value="quantity">Delete</option>
-                                                        <option value="comment">Note</option>
+                                                        <option value="delete">Delete</option>
+                                                        <option value="note">Note</option>
                                                     </select>
                                                 }
                                             </span>
                                         </div>
                                         {selectedRow[id] && <button onClick={() => handleSave(product.id)}>save</button>}
                                     </div>
-                                ))
+})
                             }
                         </div>
                     </div>

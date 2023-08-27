@@ -511,6 +511,7 @@ hr {
     background-color: white;
     border-radius: 10px;
     box-sizing: border-box;
+    z-index: 100;
 }
 
 .myTable-title {
@@ -519,48 +520,58 @@ hr {
     font-size: 2rem;
     font-weight: 700;
     text-transform: capitalize;
+    background-color: white;
+    z-index: 100;
 }
 
 .myTable {
-    padding: 10px 20px;
-    width: 100%;
+    padding: 10px 10px;
+    /* width: 80%; */
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #696969;
     display: flex;
     flex-direction: column;
     gap: 20px;
     /* flex-flow: wrap; */
+    width: 100%;
 }
-
+.myTable *{
+    justify-content: start;
+    align-items: center;
+}
+.jodit-status-bar-link{
+    /* hiding the jodit link from userInterface */
+    display: none;
+}
 .myTable-header {
     display: flex;
     justify-content: center;
     border-bottom: 1px solid rgb(226, 226, 226);
     text-align: center;
+    background-color: rgb(234, 234, 234);
+    opacity: 1;
+    color: rgb(0, 0, 0);
+    z-index: 100;
+    width: 100%;
+    font-weight: 700;
 }
-
 .myTable-row {
+    border-bottom: 1px solid rgb(239, 239, 239);
+    margin: 0px 0;
+    padding: 5px 0;
+    text-align: start;
     display: flex;
     min-width: 100%;
-    text-align: start;
     margin: 0;
     padding: 0;
     overflow-x: scroll;
 }
-
 .myTable-body {
     display: flex;
     justify-content: center;
     flex-direction: column;
     gap: 0;
-}
-
-.myTable-body .myTable-row {
-    border-bottom: 1px solid rgb(239, 239, 239);
-    margin: 0px 0;
-    padding: 5px 0;
-    /* background-color: rgb(247, 247, 247); */
-    text-align: center;
+    width: 100%;
 }
 
 .myTable-body .myTable-row:hover {
@@ -568,14 +579,13 @@ hr {
 }
 
 .myTable-cell {
-    text-align: start;
+    text-align: center;
     font-size: larger;
     overflow-x: scroll;
     height: fit-content;
     max-height: 30px;
-    max-width: 150px;
-    min-width: 80px;
-    width: auto;
+    width: 100px;
+    /* background-color: red; */
 }
 
 .modalBox {

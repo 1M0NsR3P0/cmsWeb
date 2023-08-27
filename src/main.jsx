@@ -27,6 +27,9 @@ import TheMail from './assets/Components/TheMail.jsx';
 import SecretRoutes from './assets/Components/SecretRoutes.jsx';
 import NewMail from './assets/Components/NewMail.jsx';
 import EditProduct from './assets/Components/EditProduct.jsx';
+import AddProducts from './assets/Components/AddProducts.jsx';
+import CategoriesManage from './assets/Components/CategoriesManage.jsx';
+import TagsManageMents from './assets/Components/TagsManageMents.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -111,6 +114,18 @@ const router = createBrowserRouter([
       {
         path: '/post',
         element: <Post />
+      },
+      {
+        path: '/add',
+        element: <AddProducts/>
+      },
+      {
+        path: '/categories',
+        element: <CategoriesManage/>
+      },
+      {
+        path: '/tags',
+        element: <TagsManageMents/>
       },
       {
         path: '/users',

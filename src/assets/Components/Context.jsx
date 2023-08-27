@@ -1,6 +1,7 @@
 import React, { createContext, useState, useContext } from 'react';
 import '../../../src/App.css'
 import products from "../../../public/products.json"
+import category from "../../../public/category.json"
 // Create a new context
 const AppContext = createContext();
 
@@ -12,6 +13,7 @@ export const AppProvider = ({ children }) => {
   const [showSettingIcon, setSettingIcon] = useState(true);
   const [makeActiveClass, setActiveClass] = useState(false);
   const [makeActiveClass2, setActiveClass2] = useState(false);
+  const [makeActiveClass3, setActiveClass3] = useState(false);
 
 
   const toggleSetting = () => {
@@ -34,9 +36,13 @@ export const AppProvider = ({ children }) => {
   const ToggleLinkActive2 = ()=>{
     setActiveClass2(true)
   }
+  const ToggleLinkActive3 = ()=>{
+    setActiveClass3(true)
+  }
   const ToggleFlaseActive = ()=>{
     setActiveClass(false)
     setActiveClass2(false)
+    setActiveClass3(false)
   }
   const letter = <div class='h1'> hello there sir, </div>
   const letter2 = "<div class='h1'> hello there sir, </div>"
@@ -87,10 +93,13 @@ const user = {mail:"me@mail.com",name:"me"}
     makeActiveClass,
     ToggleFlaseActive,
     ToggleLinkActive2,
+    ToggleLinkActive3,
+    makeActiveClass3,
     makeActiveClass2,
     msges,
     products,
     user,
+    category,
 
   };
 
